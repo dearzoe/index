@@ -1,0 +1,2 @@
+# index
+blog index
