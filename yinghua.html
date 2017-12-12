@@ -5,12 +5,22 @@
     <title>动态散花背景</title>
     <meta name="description" content="Change OR Die" />
     <style>
-        *{margin:0;padding:0;list-style-type:none;}
-        a,img{border:0;}
-        body {
-            font:12px/180% Arial, Helvetica, sans-serif, "新宋体";
-            background-image: url("overlay.png")/*tpa=https://sfantree.com/assets/css/images/overlay.png*/, linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url("bg.jpg")
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
         }
+
+        a, img {
+            border: 0;
+        }
+
+        body {
+            font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+            /*background-image: url("overlay.png"), linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url("bg.jpg");*/
+            background:linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35));
+        }
+
         @-webkit-keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -46,40 +56,60 @@
                 opacity: 1;
             }
         }
+
         @-webkit-keyframes fadeOut {
             0% {
-                opacity: 0;
+                width: 130px;
+                height: 130px;
+            }
+            25% {
+                width: 135px;
+                height: 135px;
             }
             50% {
-                opacity: 0.5;
+                width: 140px;
+                height: 140px;
+            }
+            75% {
+                width: 145px;
+                height: 145px;
+            }
+            90% {
+                width: 155px;
+                height: 155px;
             }
             100% {
-                opacity: 0.5;
+                width: 150px;
+                height: 150px;
             }
         }
-        #sakura{
+
+        #sakura {
             opacity: 0;
-            animation-fill-mode:forwards;
-            -webkit-animation-fill-mode:forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
             -webkit-animation-name: fadeIn; /*动画名称*/
-            -webkit-animation-duration: 4s; /*动画持续时间*/
+            -webkit-animation-duration: 2s; /*动画持续时间*/
             -webkit-animation-iteration-count: 1; /*动画次数*/
-            -webkit-animation-delay: 0s; /*延迟时间*/
+            -webkit-animation-delay: 1s; /*延迟时间*/
         }
-        #main{
+
+        #main {
             position: fixed;
             width: 20%;
             left: 40%;
             top: 30%;
         }
-        #main header{
+
+        #main header {
             text-align: center;
         }
-        #main header span img{
+
+        #main header span img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            -webkit-animation:fadeOut 2s;
+            -webkit-animation: fadeOut 0.5s;
         }
     </style>
 </head>
