@@ -4,18 +4,100 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>动态散花背景</title>
     <meta name="description" content="Change OR Die" />
-
+    <style>
+        *{margin:0;padding:0;list-style-type:none;}
+        a,img{border:0;}
+        body {
+            font:12px/180% Arial, Helvetica, sans-serif, "新宋体";
+            background-image: url("overlay.png")/*tpa=https://sfantree.com/assets/css/images/overlay.png*/, linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url("bg.jpg")
+        }
+        @-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            20% {
+                opacity: 0.2;
+            }
+            30% {
+                opacity: 0.3;
+            }
+            40% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            60% {
+                opacity: 0.6;
+            }
+            70% {
+                opacity: 0.7;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.9;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @-webkit-keyframes fadeOut {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+        #sakura{
+            opacity: 0;
+            animation-fill-mode:forwards;
+            -webkit-animation-fill-mode:forwards;
+            -webkit-animation-name: fadeIn; /*动画名称*/
+            -webkit-animation-duration: 4s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 0s; /*延迟时间*/
+        }
+        #main{
+            position: fixed;
+            width: 20%;
+            left: 40%;
+            top: 30%;
+        }
+        #main header{
+            text-align: center;
+        }
+        #main header span img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            -webkit-animation:fadeOut 2s;
+        }
+    </style>
 </head>
 
 <body>
 
 <style type="text/css">
-    *{margin:0;padding:0;list-style-type:none;}
-    a,img{border:0;}
-    body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+
 </style>
 
 <canvas id="sakura"></canvas>
+<section id="main">
+    <header>
+        <span>
+            <img src="img.jpg" alt="">
+        </span>
+    </header>
+</section>
 <!-- sakura shader -->
 <script id="sakura_point_vsh" type="x-shader/x_vertex">
 uniform mat4 uProjection;
@@ -1091,11 +1173,17 @@ void main(void) {
             return;
         }
 
-        window.addEventListener('resize', onResize);
-
-        setViewports();
-        createScene();
-        initScene();
+        setTimeout(function () {
+            onResize();
+            setViewports();
+            createScene();
+            initScene();
+        },1000);
+//        window.addEventListener('resize', onResize);
+//
+//        setViewports();
+//        createScene();
+//        initScene();
 
         timeInfo.start = new Date();
         timeInfo.prev = timeInfo.start;
