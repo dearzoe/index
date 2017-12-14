@@ -13,12 +13,72 @@
 
         a, img {
             border: 0;
+            text-decoration: none;
         }
 
         body {
             font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
             /*background-image: url("overlay.png"), linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url("bg.jpg");*/
             background:linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35));
+        }
+
+        #sakura {
+            opacity: 0;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
+            -webkit-animation-name: fadeIn; /*动画名称*/
+            -webkit-animation-duration: 2s; /*动画持续时间*/
+            -webkit-animation-iteration-count: 1; /*动画次数*/
+            -webkit-animation-delay: 1s; /*延迟时间*/
+        }
+
+        #main {
+            position: fixed;
+            width: 20%;
+            left: 40%;
+            top: 30%;
+        }
+
+        #main header {
+            text-align: center;
+        }
+
+        #main header span img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            -webkit-animation: fadeOut 0.5s;
+        }
+        #main header h1{
+            height: 40px;
+            line-height: 40px;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-background-size: 200% 100%;
+            background-image: -webkit-linear-gradient(left, #ffb6ad, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff,  #ffb6ad);
+            -webkit-animation: masked-animation-left 4s infinite linear;
+        }
+        #main header p{
+            height: 40px;
+            line-height: 40px;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-background-size: 200% 100%;
+            background-image: -webkit-linear-gradient(left, #fab6ac, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fab6ac);
+            -webkit-animation: masked-animation-right 4s infinite linear;
+        }
+        #main header h1,p{
+            margin-bottom: 10px;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width:100%;
+            text-align: center;
+        }
+        footer ul li,li>a{
+            font-size: 14px;
+            color: #ceced4;
         }
 
         @-webkit-keyframes fadeIn {
@@ -83,33 +143,22 @@
                 height: 150px;
             }
         }
-
-        #sakura {
-            opacity: 0;
-            animation-fill-mode: forwards;
-            -webkit-animation-fill-mode: forwards;
-            -webkit-animation-name: fadeIn; /*动画名称*/
-            -webkit-animation-duration: 2s; /*动画持续时间*/
-            -webkit-animation-iteration-count: 1; /*动画次数*/
-            -webkit-animation-delay: 1s; /*延迟时间*/
+        @-webkit-keyframes masked-animation-left {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -100% 0;
+            }
         }
 
-        #main {
-            position: fixed;
-            width: 20%;
-            left: 40%;
-            top: 30%;
-        }
-
-        #main header {
-            text-align: center;
-        }
-
-        #main header span img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            -webkit-animation: fadeOut 0.5s;
+        @-webkit-keyframes masked-animation-right {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -100% 0;
+            }
         }
     </style>
 </head>
@@ -126,8 +175,17 @@
         <span>
             <img src="img.jpg" alt="">
         </span>
+        <h1>胡文哲</h1>
+        <p>hello World!</p>
     </header>
+
 </section>
+<footer>
+    <ul>
+        <li>©&nbsp;<a href="http://huwenzhe.com/">dearzoe</a></li>
+        <li>BLOG SINCE 2017</li>
+    </ul>
+</footer>
 <!-- sakura shader -->
 <script id="sakura_point_vsh" type="x-shader/x_vertex">
 uniform mat4 uProjection;
